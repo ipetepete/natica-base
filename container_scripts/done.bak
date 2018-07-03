@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+apps="
+audit
+natica
+provisional
+schedule
+tada
+water
+"
+
+hashdir=/scripts/data
+SITE=/mars/marssite
+
+for app in $apps
+do
+ fixture=$hashdir/${app}.yaml
+ #echo "DRY-RUN from: $fixture"
+ echo "Loading from: $fixture"
+ $SITE/manage.py loaddata $fixture
+done
