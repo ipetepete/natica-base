@@ -1,15 +1,13 @@
-FROM ipetepete/centos7-python3:latest
+FROM python:3.6.6-jessie
 
-
-RUN yum install -y \
-   epel-release \
-   openssl-devel \
-   postgresql-devel \
-   gcc-c++ \
+RUN apt update
+RUN apt install -y \
+   libc-dev \
+   build-essential \
    git \
    rsync
 
-RUN yum install -y nginx
+RUN apt install -y nginx
 
 
 # setup all the configfiles
@@ -25,12 +23,13 @@ COPY ./config/create-nfs-group.sh /config
 
 RUN sh /config/create-nfs-group.sh
 
-COPY ./bash_profile /root/.bashrc
+#COPY ./bash_profile /root/.bashrc
 
 RUN mkdir /mars
 WORKDIR /mars
 COPY ./requirements.txt /mars
-RUN source scl_source enable rh-python35 && pip3 install -r requirements.txt
+RUN pip3 install -r requirements.txt
+#RUN source scl_source enable rh-python35 && pip3 install -r requirements.txt
 #RUN scl enable rh-python35 bash
 #RUN pip3 install -r requirements.txt
 #ENV PYTHONPATH /mars/marssite/marssite
