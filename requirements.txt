@@ -1,12 +1,12 @@
 astropy==3.0.3
 attrs==17.4.0
-certifi==2018.1.18
+certifi==2018.8.24
 chardet==3.0.4
 coreapi==2.3.3
 coreschema==0.0.4
 cycler==0.10.0
 dicttoxml==1.7.4
-Django==2.0.3
+Django==2.1.2
 django-annoying==0.8.0
 django-appconf==1.0.2
 django-bower==5.2.0

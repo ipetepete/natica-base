@@ -2,12 +2,13 @@ FROM python:3.6.6-jessie
 
 RUN apt update
 RUN apt install -y \
+   postgresql-client \
    libc-dev \
    build-essential \
    git \
    rsync
 
-RUN apt install -y nginx
+RUN apt install -y nginx supervisor
 
 
 # setup all the configfiles
@@ -23,11 +24,16 @@ COPY ./config/create-nfs-group.sh /config
 
 RUN sh /config/create-nfs-group.sh
 
+# Concat the ca-bundle with the system one
+COPY ./config/__dm_noao_edu.ca-bundle /config
+#RUN cat /config/__dm_noao_edu.ca-bundle >> /etc/ssl/certs/ca-certificates.crt
+
 #COPY ./bash_profile /root/.bashrc
 
 RUN mkdir /mars
 WORKDIR /mars
 COPY ./requirements.txt /mars
+RUN pip3 install uwsgi
 RUN pip3 install -r requirements.txt
 #RUN source scl_source enable rh-python35 && pip3 install -r requirements.txt
 #RUN scl enable rh-python35 bash
