@@ -40,6 +40,7 @@ RUN pip3 install -r requirements.txt
 #RUN pip3 install -r requirements.txt
 #ENV PYTHONPATH /mars/marssite/marssite
 
+RUN adduser --disabled-password --gecos "" devops
 
 
 EXPOSE 80 8000
