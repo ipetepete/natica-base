@@ -1,4 +1,4 @@
-FROM python:3.6.6-jessie
+FROM python:3.6.8-jessie
 
 RUN apt update
 RUN apt install -y \
@@ -6,6 +6,7 @@ RUN apt install -y \
    libc-dev \
    build-essential \
    git \
+   vim \
    rsync
 
 RUN apt install -y nginx supervisor
@@ -41,6 +42,8 @@ RUN pip3 install -r requirements.txt
 #ENV PYTHONPATH /mars/marssite/marssite
 
 RUN adduser --disabled-password --gecos "" devops
+RUN mkdir /var/log/mars
+RUN chown devops:www-data -R /var/log/mars
 
 
 EXPOSE 80 8000
