@@ -18,10 +18,8 @@ COPY ./config/supervisord.conf /etc/supervisord.conf
 COPY ./config/nginx-app.conf /etc/nginx/sites-available/default
 COPY ./config/supervisor-app.conf /etc/supervisor/conf.d/
 COPY ./config/search-schema.json /etc/mars/search-schema.json
-COPY ./config/uwsgi.ini /config/
-COPY ./config/uwsgi_params /config/
 
-COPY ./config/create-nfs-group.sh /config
+COPY ./config/create-nfs-group.sh /config/create-nfs-group.sh
 
 RUN sh /config/create-nfs-group.sh
 
@@ -34,7 +32,6 @@ COPY ./config/__dm_noao_edu.ca-bundle /config
 RUN mkdir /mars
 WORKDIR /mars
 COPY ./requirements.txt /mars
-RUN pip3 install uwsgi
 RUN pip3 install -r requirements.txt
 #RUN source scl_source enable rh-python35 && pip3 install -r requirements.txt
 #RUN scl enable rh-python35 bash
