@@ -22,7 +22,7 @@ django-graphos-3==0.1.1
 django-rest-swagger==2.1.2
 django-tables2==1.17.1
 django-widget-tweaks==1.4.1
-django==2.2.4
+django==2.2.10
 djangorestframework-csv==2.1.0
 djangorestframework-xml==1.3.0
 djangorestframework==3.10.3
