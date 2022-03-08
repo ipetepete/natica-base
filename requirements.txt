@@ -31,7 +31,7 @@ elasticsearch-dsl==6.3.1
 elasticsearch==6.3.1
 future==0.17.1
 gunicorn==19.6.0
-httpie==1.0.3
+httpie==3.1.0
 icalendar==3.8.4
 idna==2.6
 itypes==1.1.0
